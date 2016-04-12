@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "bleno": ">0.1.4"
-    "mraa": ">0.9.5"
+    "mraa": ">0.9.6"
+    "microseconds": ">0.1.0"
   }
 }
