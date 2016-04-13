@@ -51,25 +51,7 @@ function getDistance(pin) {
 }
 
 UltrasoundLevelCharacteristic.prototype.onReadRequest = function(offset, callback) {
-  /*
-  var analogPin0 = new mraa.Aio(0)
-  var analogPin1 = new mraa.Aio(1)
-  var analogPin2 = new mraa.Aio(2)
-  var leftValue = analogPin0.read();
-  var rightValue = analogPin1.read();
-  var frontValue = analogPin2.read();
-  var leftDistance = leftValue*5;
-  var rightDistance = rightValue*5;
-  var frontDistance = frontValue*5;
-  var ultrasound_string = leftValue+","+rightValue+","+frontValue;
-  */
-  /*
-  var pwm11 = new mraa.Pwm(11);
-  pwm11.enable(true);
-  var value = pwm11.read();
-  var ultrasound_string = value+",";
-  */
-  var pin3 = new mraa.Gpio(14);
+  var pin3 = new mraa.Gpio(36);
   pin3.dir(mraa.DIR_IN);
   var distancePin3
 
@@ -80,3 +62,16 @@ UltrasoundLevelCharacteristic.prototype.onReadRequest = function(offset, callbac
 };
 
 module.exports = UltrasoundLevelCharacteristic;
+
+/*Analog
+  var analogPin0 = new mraa.Aio(0)
+  var analogPin1 = new mraa.Aio(1)
+  var analogPin2 = new mraa.Aio(2)
+  var leftValue = analogPin0.read();
+  var rightValue = analogPin1.read();
+  var frontValue = analogPin2.read();
+  var leftDistance = leftValue*5;
+  var rightDistance = rightValue*5;
+  var frontDistance = frontValue*5;
+  var ultrasound_string = leftValue+","+rightValue+","+frontValue;
+*/
