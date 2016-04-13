@@ -69,24 +69,10 @@ UltrasoundLevelCharacteristic.prototype.onReadRequest = function(offset, callbac
   var value = pwm11.read();
   var ultrasound_string = value+",";
   */
-  var pin3 = new mraa.Gpio(3);
+  var pin3 = new mraa.Gpio(14);
   pin3.dir(mraa.DIR_IN);
   var distancePin3
-  /*
-  var pulseOn, pulseOff;
-  var distance;
-  while (pin3.read() == 1) {
-  }
-  while (pin3.read() == 0) {
-    pulseOff = us.now();
-  }
-  while (pin3.read() == 1) {
-    pulseOn = us.now();
-  }
-  console.log(pulseOff);
-  console.log(pulseOn);
-  distance = pulseOn - pulseOff;
-  */
+
   distancePin3 = getDistance(pin3);
   var ultrasound_string = distancePin3+",";
   console.log(ultrasound_string);
