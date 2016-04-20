@@ -51,12 +51,20 @@ function getDistance(pin) {
 }
 
 UltrasoundLevelCharacteristic.prototype.onReadRequest = function(offset, callback) {
-  var pin3 = new mraa.Gpio(36);
-  pin3.dir(mraa.DIR_IN);
-  var distancePin3
+  var pinF = new mraa.Gpio(47);
+  var pinL = new mraa.Gpio(48);
+  var pinR = new mraa.Gpio(36);
+  pinF.dir(mraa.DIR_IN);
+  pinL.dir(mraa.DIR_IN);
+  pinR.dir(mraa.DIR_IN);
+  var distanceF;
+  var distanceL;
+  var distanceR;
 
-  distancePin3 = getDistance(pin3);
-  var ultrasound_string = distancePin3+",";
+  distanceF = getDistance(pinF);
+  distanceL = getDistance(pinL);
+  distanceR = getDistance(pinR);
+  var ultrasound_string = distanceF+","+distanceL+","+distanceR;
   console.log(ultrasound_string);
   callback(this.RESULT_SUCCESS, new Buffer(ultrasound_string));
 };
