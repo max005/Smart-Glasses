@@ -14,8 +14,8 @@
     "url" : "https://github.com/max005"
   },
   "dependencies": {
-    "bleno": ">0.4.0",
-    "mraa": ">1.0.0",
-    "microseconds": ">0.1.0"
+    "bleno": ">=0.4.0",
+    "mraa": ">=1.0.0",
+    "microseconds": ">=0.1.0"
   }
 }
