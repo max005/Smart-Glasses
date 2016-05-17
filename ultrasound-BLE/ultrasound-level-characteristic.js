@@ -42,11 +42,15 @@ function getDistance(pin) {
   	while (pin.read() == 1) {
     	pulseOn = us.now();
   	}
-  	console.log(pulseOff);
-  	console.log(pulseOn);
+  	//console.log(pulseOff);
+  	//console.log(pulseOn);
   	floatValue = (pulseOn - pulseOff)/10;
-  	console.log(floatValue);
+  	//console.log(floatValue);
   	distance = Math.round(floatValue);
+    if(distance < 30)
+      distance = 30;
+    else if(distance > 500)
+      distance = 500;
   	return distance;
 }
 
