@@ -46,8 +46,12 @@ UltrasoundLevelCharacteristic.prototype.onReadRequest = function(offset, callbac
 
 UltrasoundLevelCharacteristic.prototype.onSubscribe = function(maxValueSize, updateValueCallback) {
   console.log('UltrasoundLevelCharacteristic - onSubscribe');
-  this._updateValueCallback = updateValueCallback;
+  //this._updateValueCallback = updateValueCallback;
 };
+
+UltrasoundLevelCharacteristic.prototype.onNotify = function() {
+  console.log('UltrasoundLevelCharacteristic - onNotify');
+}
 
 UltrasoundLevelCharacteristic.prototype.onUnsubscribe = function() {
   console.log('UltrasoundLevelCharacteristic - onUnsubscribe');
