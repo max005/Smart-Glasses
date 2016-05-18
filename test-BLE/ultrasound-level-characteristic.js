@@ -51,7 +51,7 @@ UltrasoundLevelCharacteristic.prototype.onSubscribe = function(maxValueSize, upd
 
 UltrasoundLevelCharacteristic.prototype.onUnsubscribe = function() {
   console.log('UltrasoundLevelCharacteristic - onUnsubscribe');
-  this._updateValueCallback = updateValueCallback;
+  this._updateValueCallback = null;
 };
 
 module.exports = UltrasoundLevelCharacteristic;
