@@ -60,7 +60,7 @@ UltrasoundLevelCharacteristic.prototype.onSubscribe = function(maxValueSize, upd
 
 UltrasoundLevelCharacteristic.prototype.onNotify = function() {
   console.log('UltrasoundLevelCharacteristic - onNotify');
-}
+};
 
 UltrasoundLevelCharacteristic.prototype.onUnsubscribe = function() {
   console.log('UltrasoundLevelCharacteristic - onUnsubscribe');
