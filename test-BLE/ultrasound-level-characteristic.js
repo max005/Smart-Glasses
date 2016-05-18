@@ -54,7 +54,7 @@ UltrasoundLevelCharacteristic.prototype.onSubscribe = function(maxValueSize, upd
     var distance_right = random(500, 30);
     var ultrasound_string = distance_front+","+distance_left+","+distance_right;
     console.log(ultrasound_string);
-    updateValueCallback(new Buffer([ultrasound_string]);
+    updateValueCallback(new Buffer(ultrasound_string));
   }, 1000);
 };
 
