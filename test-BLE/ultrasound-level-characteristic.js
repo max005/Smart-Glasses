@@ -30,7 +30,7 @@ function usleep(time) {
 }
 
 function random(high, low){
-	return Math.random(Math.random()*(high - low)+low);
+	return Math.floor(Math.random()*(high - low)+low);
 }
 
 
