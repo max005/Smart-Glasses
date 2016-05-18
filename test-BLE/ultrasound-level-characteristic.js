@@ -30,15 +30,15 @@ function usleep(time) {
 }
 
 function random(high, low){
-	return Math.random * (high - low) + low;
+	return Math.random(Math.random()*(high - low)+low);
 }
 
 
 UltrasoundLevelCharacteristic.prototype.onReadRequest = function(offset, callback) {
 
-  var distance_front = Math.round(random(500, 30));
-  var distance_left = Math.round(random(500, 30));
-  var distance_right = Math.round(random(500, 30));
+  var distance_front = random(500, 30);
+  var distance_left = random(500, 30);
+  var distance_right = random(500, 30);
   var ultrasound_string = distance_front+","+distance_left+","+distance_right;
   console.log(ultrasound_string);
   callback(this.RESULT_SUCCESS, new Buffer(ultrasound_string));
