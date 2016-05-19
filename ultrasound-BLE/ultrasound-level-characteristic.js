@@ -17,7 +17,7 @@ pinR.dir(mraa.DIR_IN);
   var UltrasoundLevelCharacteristic = function() {
   UltrasoundLevelCharacteristic.super_.call(this, {
       uuid: 'AAA1',
-      properties: ['read'],
+      properties: ['read', 'notify'],
       descriptors: [
         new Descriptor({
             uuid: '2901',
