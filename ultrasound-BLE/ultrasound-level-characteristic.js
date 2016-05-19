@@ -74,6 +74,7 @@ UltrasoundLevelCharacteristic.prototype.onReadRequest = function(offset, callbac
 };
 
 UltrasoundLevelCharacteristic.prototype.onSubscribe = function(maxValueSize, updateValueCallback) {
+  this._updateValueCallback = updateValueCallback;
   setInterval(function() {
     //poll sensor or get value or something
     var distance_front = getDistance(pinF);
@@ -85,7 +86,12 @@ UltrasoundLevelCharacteristic.prototype.onSubscribe = function(maxValueSize, upd
   }, 1000);
 };
 
+UltrasoundLevelCharacteristic.prototype.onNotify = function() {
+  //console.log('UltrasoundLevelCharacteristic - onNotify');
+};
+
 UltrasoundLevelCharacteristic.prototype.onUnsubscribe = function() {
+  console.log('UltrasoundLevelCharacteristic - onUnsubscribe');
   this._updateValueCallback = null;
 };
 
