@@ -7,6 +7,13 @@ var util = require('util'),
   Descriptor = bleno.Descriptor,
   Characteristic = bleno.Characteristic;
 
+var pinF = new mraa.Gpio(47);
+var pinL = new mraa.Gpio(48);
+var pinR = new mraa.Gpio(36);
+pinF.dir(mraa.DIR_IN);
+pinL.dir(mraa.DIR_IN);
+pinR.dir(mraa.DIR_IN);
+
   var UltrasoundLevelCharacteristic = function() {
   UltrasoundLevelCharacteristic.super_.call(this, {
       uuid: 'AAA1',
@@ -55,22 +62,31 @@ function getDistance(pin) {
 }
 
 UltrasoundLevelCharacteristic.prototype.onReadRequest = function(offset, callback) {
-  var pinF = new mraa.Gpio(47);
-  var pinL = new mraa.Gpio(48);
-  var pinR = new mraa.Gpio(36);
-  pinF.dir(mraa.DIR_IN);
-  pinL.dir(mraa.DIR_IN);
-  pinR.dir(mraa.DIR_IN);
   var distanceF;
   var distanceL;
   var distanceR;
-
   distanceF = getDistance(pinF);
   distanceL = getDistance(pinL);
   distanceR = getDistance(pinR);
   var ultrasound_string = distanceF+","+distanceL+","+distanceR;
   console.log(ultrasound_string);
   callback(this.RESULT_SUCCESS, new Buffer(ultrasound_string));
+};
+
+UltrasoundLevelCharacteristic.prototype.onSubscribe = function(maxValueSize, updateValueCallback) {
+  setInterval(function() {
+    //poll sensor or get value or something
+    var distance_front = getDistance(pinF);
+    var distance_left = getDistance(pinL);
+    var distance_right = getDistance(pinR);
+    var ultrasound_string = distance_front+","+distance_left+","+distance_right;
+    console.log(ultrasound_string);
+    updateValueCallback(new Buffer(ultrasound_string));
+  }, 1000);
+};
+
+UltrasoundLevelCharacteristic.prototype.onUnsubscribe = function() {
+  this._updateValueCallback = null;
 };
 
 module.exports = UltrasoundLevelCharacteristic;
